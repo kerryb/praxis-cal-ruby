@@ -4,7 +4,7 @@ Feature: Calendar utility
     When I run "cal 1 2010"
     Then I should see:
     """
-    January 2010
+       January 2010
     Su Mo Tu We Th Fr Sa
                     1  2
      3  4  5  6  7  8  9

@@ -4,7 +4,7 @@ class Calendar
 
   def run
     <<EOF
-January 2010
+   January 2010
 Su Mo Tu We Th Fr Sa
                 1  2
  3  4  5  6  7  8  9
