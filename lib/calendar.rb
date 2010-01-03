@@ -5,7 +5,7 @@ class Calendar
     @year = args[1].to_i
   end
 
-  def run
+  def output
     output = "   #{month_name(@month)} #{@year}\n"
     output << <<EOF
 Su Mo Tu We Th Fr Sa

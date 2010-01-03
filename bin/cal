@@ -2,4 +2,4 @@
 $:.unshift(File.dirname(__FILE__) + "/../lib")
 require "calendar"
 
-puts Calendar.new(ARGV).run
+puts Calendar.new(ARGV).output
