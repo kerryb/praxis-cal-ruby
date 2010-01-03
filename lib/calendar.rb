@@ -1,10 +1,13 @@
 class Calendar
+  MONTHS = %w(January February March April May June July August September October November December)
   def initialize args
+    @month = args[0].to_i
+    @year = args[1].to_i
   end
 
   def run
-    <<EOF
-   January 2010
+    output = "   #{month_name(@month)} #{@year}\n"
+    output << <<EOF
 Su Mo Tu We Th Fr Sa
                 1  2
  3  4  5  6  7  8  9
@@ -13,5 +16,12 @@ Su Mo Tu We Th Fr Sa
 24 25 26 27 28 29 30
 31
 EOF
+    output
+  end
+
+  private
+
+  def month_name month_number
+    MONTHS[month_number - 1]
   end
 end
