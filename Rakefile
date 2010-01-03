@@ -12,6 +12,16 @@ Spec::Rake::SpecTask.new("spec") do |t|
 end
 
 desc "Run all features"
-Cucumber::Rake::Task.new(:features) do |t|
-  t.cucumber_opts = "features --format progress"
+task :features => %w(features:complete features:wip)
+
+namespace :features do
+  desc "Run work-in-progress features"
+  Cucumber::Rake::Task.new(:wip) do |t|
+    t.cucumber_opts = "features --tag @wip --wip --format progress"
+  end
+
+  desc "Run complete features"
+  Cucumber::Rake::Task.new(:complete) do |t|
+    t.cucumber_opts = "features --tag ~@wip --format progress"
+  end
 end
