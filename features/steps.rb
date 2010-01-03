@@ -1,7 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../lib/calendar.rb')
 
 When /^I run "cal ([^\"]*)"$/ do |args|
-  ARGV.clear << args.split
+  ARGV.clear
+  ARGV.concat args.split
   orig_stdout = $stdout
   $stdout = stdout_capture = StringIO.new
   load File.expand_path(File.dirname(__FILE__) + '/../bin/cal')
