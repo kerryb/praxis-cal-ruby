@@ -1,6 +1,6 @@
-require 'spec'
-$:.unshift(File.dirname(__FILE__) + '/../lib')
-require 'calendar'
+require "spec"
+$:.unshift(File.dirname(__FILE__) + "/../lib")
+require "calendar"
 
 describe Calendar do
   describe "displaying a specific month and year" do
