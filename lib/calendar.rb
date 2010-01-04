@@ -16,14 +16,20 @@ class Calendar
   end
 
   def month
-    <<EOF
-Su Mo Tu We Th Fr Sa
- 1  2  3  4  5  6  7
- 8  9 10 11 12 13 14
-15 16 17 18 19 20 21
-22 23 24 25 26 27 28
-29 30 31
-EOF
+    output = "Su Mo Tu We Th Fr Sa\n"
+    first_of_month = Date.new @year, @month
+    last_of_month = Date.new @year, @month, -1
+    weekday_of_first_of_month = first_of_month.wday
+    dates = []
+    weekday_of_first_of_month.times {dates << "  "}
+    (first_of_month..last_of_month).each do |date|
+      dates << "%2i" % date.day
+    end
+    until dates.empty? do
+      #p dates
+      output << dates.slice!(0,7).join(' ') << "\n"
+    end
+    output
   end
 
   def month_name month_number
