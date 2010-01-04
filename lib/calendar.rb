@@ -6,8 +6,17 @@ class Calendar
   end
 
   def output
-    output = "   #{month_name(@month)} #{@year}\n"
-    output << <<EOF
+    header + month
+  end
+
+  private
+
+  def header
+    "   #{month_name(@month)} #{@year}\n"
+  end
+
+  def month
+    <<EOF
 Su Mo Tu We Th Fr Sa
                 1  2
  3  4  5  6  7  8  9
@@ -16,10 +25,7 @@ Su Mo Tu We Th Fr Sa
 24 25 26 27 28 29 30
 31
 EOF
-    output
   end
-
-  private
 
   def month_name month_number
     MONTHS[month_number - 1]
