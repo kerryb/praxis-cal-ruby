@@ -12,7 +12,6 @@ Feature: Calendar utility
     17 18 19 20 21 22 23
     24 25 26 27 28 29 30
     31
-
     """
 
   Scenario: Single month view (far past), with month and year specified
@@ -26,5 +25,16 @@ Feature: Calendar utility
     14 15 16 17 18 19 20
     21 22 23 24 25 26 27
     28 29 30 31
+    """
 
+  @wip
+  Scenario: Single month view (calendar reformation), with month and year specified
+    When I run "cal 9 1752"
+    Then I should see:
+    """
+       September 1752
+    Su Mo Tu We Th Fr Sa
+           1  2 14 15 16
+    17 18 19 20 21 22 23
+    24 25 26 27 28 29 30
     """

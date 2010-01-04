@@ -9,5 +9,5 @@ When /^I run "cal ([^\"]*)"$/ do |args|
 end
 
 Then /^I should see:$/ do |string|
-  @output.should == string
+  @output.chomp.should == string
 end
