@@ -27,7 +27,6 @@ Feature: Calendar utility
     28 29 30 31
     """
 
-  @wip
   Scenario: Single month view (calendar reformation), with month and year specified
     When I run "cal 9 1752"
     Then I should see:
