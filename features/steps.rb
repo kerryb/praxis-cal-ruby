@@ -1,4 +1,11 @@
-When /^I run "cal ([^\"]*)"$/ do |args|
+require 'chronic'
+require 'spec/mocks'
+
+Given /^it is (.*)$/ do |date|
+  Time.stub(:now).and_return Chronic.parse(date)
+end
+
+When /^I run "cal([^\"]*)"$/ do |args|
   ARGV.clear
   ARGV.concat args.split
   orig_stdout = $stdout
