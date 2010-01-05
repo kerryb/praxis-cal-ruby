@@ -3,8 +3,12 @@ require 'date'
 class Calendar
   MONTHS = %w(January February March April May June July August September October November December)
   def initialize args
-    @month = args[0].to_i
-    @year = args[1].to_i
+    if args.empty?
+      now = Time.now
+      @month, @year = now.month, now.year
+    else
+      @month, @year = args[0].to_i, args[1].to_i
+    end
   end
 
   def output
@@ -27,7 +31,6 @@ class Calendar
       dates << "%2i" % date.day
     end
     until dates.empty? do
-      #p dates
       output << dates.slice!(0,7).join(' ') << "\n"
     end
     output
