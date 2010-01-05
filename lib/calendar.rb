@@ -19,11 +19,10 @@ class Calendar
 
   def month
     output = "Su Mo Tu We Th Fr Sa\n"
-    first_of_month = Date.new @year, @month
-    last_of_month = Date.new @year, @month, -1
-    weekday_of_first_of_month = first_of_month.wday
+    first_of_month = Date.new @year, @month, 1, Date::ENGLAND
+    last_of_month = Date.new @year, @month, -1, Date::ENGLAND
     dates = []
-    weekday_of_first_of_month.times {dates << "  "}
+    first_of_month.wday.times {dates << "  "}
     (first_of_month..last_of_month).each do |date|
       dates << "%2i" % date.day
     end
