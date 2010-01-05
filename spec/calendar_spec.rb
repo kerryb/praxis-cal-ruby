@@ -1,13 +1,15 @@
 require "spec"
+require "chronic"
+
 $:.unshift(File.dirname(__FILE__) + "/../lib")
 require "calendar"
 
 describe Calendar do
-  describe "displaying a specific month and year" do
-    def get_calendar_rows month, year
-      Calendar.new([month, year]).output.split("\n")
-    end
+  def get_calendar_rows *args
+    Calendar.new(args).output.split("\n")
+  end
 
+  describe "displaying a specific month and year" do
     it "shows the month and year in the first line" do
       get_calendar_rows(11, 1969).first.should == "   November 1969"
     end
@@ -39,6 +41,25 @@ describe Calendar do
           "31"
         ]
       end
+    end
+  end
+
+  describe "with no arguments" do
+    before do
+      Time.stub(:now).and_return Chronic.parse("17 November 1969")
+    end
+
+    it "displays the current month" do
+      get_calendar_rows.should == [
+        "   November 1969",
+        "Su Mo Tu We Th Fr Sa",
+        "                   1",
+        " 2  3  4  5  6  7  8",
+        " 9 10 11 12 13 14 15",
+        "16 17 18 19 20 21 22",
+        "23 24 25 26 27 28 29",
+        "30"
+      ]
     end
   end
 end
