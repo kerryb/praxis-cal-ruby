@@ -25,7 +25,7 @@ class Calendar
     output = "Su Mo Tu We Th Fr Sa\n"
     dates = month_cells
     until dates.empty? do
-      output << dates.slice!(0,7).map{|d| d.zero? ? "  " : "%2i" % d}.join(' ') << "\n"
+      output << dates.slice!(0,7).map{|d| d ? "%2i" % d : "  "}.join(' ') << "\n"
     end
     output
   end
@@ -34,7 +34,7 @@ class Calendar
     first_of_month = Date.new @year, @month, 1, Date::ENGLAND
     last_of_month = Date.new @year, @month, -1, Date::ENGLAND
     dates = []
-    first_of_month.wday.times {dates << 0}
+    first_of_month.wday.times {dates << nil}
     (first_of_month..last_of_month).each do |date|
       dates << date.day
     end
