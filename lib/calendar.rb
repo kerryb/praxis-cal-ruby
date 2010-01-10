@@ -33,8 +33,7 @@ class Calendar
   def month_cells
     first_of_month = Date.new @year, @month, 1, Date::ENGLAND
     last_of_month = Date.new @year, @month, -1, Date::ENGLAND
-    dates = [nil] * first_of_month.wday + (first_of_month..last_of_month).map{|d| d.day}
-    dates
+    [nil] * first_of_month.wday + (first_of_month..last_of_month).map{|d| d.day}
   end
 
   def month_name month_number
