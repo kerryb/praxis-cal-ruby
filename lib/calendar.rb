@@ -33,11 +33,7 @@ class Calendar
   def month_cells
     first_of_month = Date.new @year, @month, 1, Date::ENGLAND
     last_of_month = Date.new @year, @month, -1, Date::ENGLAND
-    dates = []
-    first_of_month.wday.times {dates << nil}
-    (first_of_month..last_of_month).each do |date|
-      dates << date.day
-    end
+    dates = [nil] * first_of_month.wday + (first_of_month..last_of_month).map{|d| d.day}
     dates
   end
 
